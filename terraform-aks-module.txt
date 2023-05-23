@@ -1,0 +1,38 @@
+https://developer.hashicorp.com/terraform/language/modules/syntax
+https://build5nines.com/terraform-modules-create-reusable-infrastructure-as-code/
+https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git
+==========================================================================================================================================
+
+Module structure
+Re-usable modules are defined using all of the same configuration language concepts we use in root modules. Most commonly, modules use:
+
+Input variables : to accept values from the calling module.
+Output values:  to return results to the calling module, which it can then use to populate arguments elsewhere.
+Resources:  to define one or more infrastructure objects that the module will manage.
+
+To define a module, create a new directory for it and place one or more .tf files inside just as you would do for a root module. 
+Terraform can load modules either from local relative paths or from remote repositories; 
+if a module will be re-used by lots of configurations you may wish to place it in its own version control repository.
+
+Modules can also call other modules using a module block, but we recommend keeping the module tree relatively flat and 
+using module composition as an alternative to a deeply-nested tree of modules, 
+because this makes the individual modules easier to re-use in different combinations.
+==============================================================================================================================================
+
+1) create a root module
+   place all .tf files in a dir(resource u want to create)
+
+e.g: /module/<name>/*.tf  (all tf files)
+C:\Sujata\Quality_Thought\Notes\K8s\app-k8s-deploy-AKS\modules\test
+
+ 2)  push this dir to github
+     go inside dir
+C:\Sujata\Quality_Thought\Notes\K8s\app-k8s-deploy-AKS
+         git init -b main
+         git add .
+         git commit -m "First commit"
+         git remote add origin <REMOTE_URL>
+         git remote add origin https://github.com/Sujata-Joshi/k8s-AKS-terrafrom.git
+         git remote -v
+         git checkout -b main
+         git push origin main
